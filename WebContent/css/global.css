@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #888;
+}
+a:hover {
+  text-decoration: underline;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box; /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
+}
+/* 재사용 클래스 */
+.color_naver {
+  color: #03cf5d;
+}
+.text_bold-13 {
+  font-weight: bold;
+  font-size: 13px;
+}

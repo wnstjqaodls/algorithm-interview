@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+*{margin:0;padding:0;box-sizing:border-box}
+.guide, .guide > * { outline:1px solid #4f80ff;}
+.hbox{display:flex;flex-flow:row;align-items:center;}
+.vbox{display:flex;flex-flow:column;align-items:stretch;}
+.pack{display:flex;align-items:center;justify-content:center;}
+.flex{flex:1}
+.space-between{justify-content:space-between;}
+
+*{outline: 1px solid #4f80ff;}
+html,body{height:100%}
+div{padding: 20px}

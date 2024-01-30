@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+.flex-container {
+	width: 10%;
+	height: 10%;
+	background: blue;
+	margin-bottom: 10px;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	/*flex-flow: row-revers wrap;*/  
+	/* wrap > items를 여러줄로 묶음 */
+	/* flex-direction: row; */ 
+}
+.flex-container2 {
+	width: 100%;
+	height: 100%;
+	background: blue;
+	margin-bottom: 10px;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	/*flex-flow: row-revers wrap;*/  
+	/* wrap > items를 여러줄로 묶음 */
+	/* flex-direction: row; */ 
+}
+.flex-container-discription {
+	display: inline-flex; /* inline block 요소와 같은 성향(수평쌓임)을 갖는다 , items가아니라 컨테이너에대해서!*/
+}
+
+.flex-discription {
+justify-content: space-around; /* center, flex-start(기본값), space-between등이있음 */
+align-content: stretch; /*해당옵션은 items가 여러줄이상이고 여백있을때만사용가능  stretch(기본값), center , space-around; */
+}
+
+.item {
+align-items: center;
+font-size: 10px;
+color: #fff;
+
+display: flex;
+justify-content: center;
+flex: 1 1 20px; /* 증가너비 감소너비 기본너비 */
+flex: 1 20px; /* 증가너비 기본너비 */
+flex-grow: 1 2 1; /* 3개의 아이템이 있다고 가정할 시  */
+}
+
+.item:nth-child(1) { background: red; }
+.item:nth-child(2) { background: green; }
+.item:nth-child(3) { background: yellow; }
+/* :nth-child 는 형제사이싀 순서에따라 선택함 */
+
+.flex-container .item:nth-child(1) { flex-grow: 0; }
+.flex-container .item:nth-child(2) { flex-grow: 2; }
+.flex-container .item:nth-child(3) { flex-grow: 1; }
+
+</style>
+</head>
+<body>
+<h1>flexitem</h1>
+<div class="item-container">
+	<div class="item">comp1</div>
+	<div class="item">comp2</div>
+	<div class="item">comp3</div>
+</div>
+<div class="flex-container">
+	<div class="item">comp4</div>
+	<div class="item">comp5</div>
+	<div class="item">comp6</div>
+</div>
+<div class="flex-container2">
+	<div class="item">comp7</div>
+	<div class="item">comp8</div>
+	<div class="item">comp9</div>
+</div>
+</body>
+</html>

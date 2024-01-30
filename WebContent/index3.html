@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.box {
+	float: left
+}
+.clearfix::after {
+	content : "";
+	clear : both;
+	display : block
+}
+</style>
+</head>
+<body>
+<h1>수평구성</h1>
+<div class="clearfix">
+	<div class="box">123</div>
+	<div class="box">123</div>
+	<div class="box">123</div>
+</div>
+</body>
+</html>

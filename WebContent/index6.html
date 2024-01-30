@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+html,body{
+	height: 100%;
+}
+.wrap {
+    display: flex;
+    flex-direction: column;
+		height: 100%;
+}
+.header {
+  height: 65px;
+  background-color: #00c73c;
+}
+.tablist {
+    height: 70px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+.aside {
+    display: flex;
+    flex: none;
+    width: 400px;
+    background-color: #bfbab078;
+}
+.main{
+    display: flex;
+    flex: 1;
+    overflow: auto;
+}
+</style>
+</head>
+<body>
+<h1>Layout 100% Non scroll </h1>
+<div id="wrap" class="wrap">최상위 Wrapheight: 100%;
+  <header class="header">헤더영역</header>
+  <div class="tablist">탭영역</div>
+  <div class="content">
+    <div class="aside">사이드</div>
+    <div class="main">메인</div>
+  </div>
+</div>
+</body>
+</html>
