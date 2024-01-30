@@ -1,7 +1,5 @@
 package programmers.lessons;
 
-import com.sun.corba.se.impl.javax.rmi.CORBA.Util;
-
 public class A_PrintAge {
 	public static void main(String[] args) {
 		
