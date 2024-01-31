@@ -16,16 +16,32 @@ public class P55_240131_SharingPizza_2 {
 
 	public static void main(String[] args) {
 
-		int param = 51;
-		String result;
-
+		int param = 10;
+		int result;
+		
 		result = solution(param);
 		System.out.println(result);
 
 	}
 
-    public int solution(int n) {
+    public static int solution(int n) {
         int answer = 0;
+        int sliceOfpizza = 6; // 한판에 6조각
+        // 내풀이
+        // 1. 피자 6조각 으로 인원수를 나누었을때 1보다 크면 1임. 1보다 크고 2보다 작으면 무조건 2 판시켜야함..
+        // 2. 규칙 발견 : 피자판수 = 정수로 딱 나뉘어 떨어지는 수.
+        // 3. 반복문을 순회하며 ,나머지가 없이 떨어지는 i 를 찾는다. 해당 i 를 return 함.
+        
+        for (int i = 1; i <= n; i++) {
+			if( (i*sliceOfpizza) % n == 0){
+				answer = i;
+				break;
+			}
+		}
+        
+        
+        
+        
         return answer;
     }
 
