@@ -1,5 +1,7 @@
 package programmers.lessons2;
 
+import java.util.Iterator;
+
 public class P57_240131_369Games {
 	/*
 	 * 머쓱이는 친구들과 369게임을 하고 있습니다. 369게임은 1부터 숫자를 하나씩 대며 3, 6, 9가 들어가는 숫자는 숫자 대신 3, 6,
@@ -17,19 +19,35 @@ public class P57_240131_369Games {
 
 	public static void main(String[] args) {
 
-		int param = 51;
-		String result;
+		int param = 29423;
+		int result;
 
 		result = solution(param);
 		System.out.println(result);
 
 	}
 
-	public static String solution(int age) {
-
-		String answer = "";
-
-		return answer;
-	}
+    public static int solution(int order) {
+        int answer = 0;
+        String tmp = Integer.toString(order);
+        int[] intArr = new int[tmp.length()];
+        
+        for (int i = 0; i < intArr.length; i++) {
+			intArr[i] = tmp.charAt(i) - '0'; // 숫자가되기위해 ASCII 코드 '0' 값인 48을 빼주는것임. 숫자 1은 49 ,2는 50임
+		}
+        
+        int idx =0;
+        while(idx < tmp.length()) {
+        	
+        	if(intArr[idx] == 3 || intArr[idx] == 6 || intArr[idx] == 9) {
+        		answer += 1;
+        	}
+        	
+        	idx += 1;
+        }
+        
+        
+        return answer;
+    }
 
 }
