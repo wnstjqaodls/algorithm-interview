@@ -28,17 +28,31 @@ public class P56_240131_FindNumber {
 
 	public static void main(String[] args) {
 
-		int param = 51;
-		String result;
+		int param = 232443;
+		int param2 = 4;
+		int result;
 
-		result = solution(param);
+		result = solution(param,param2);
 		System.out.println(result);
 
 	}
 
-	public int solution(int num, int k) {
-		int answer = 0;
-		return answer;
-	}
+    public static int solution(int num, int k) {
+        int answer = -1;
+        // 내풀이
+        // 1. 먼저 num 을 배열 또는 string 으로 변환한다.
+        // 2. 자바 api 사용하여 찾은 인덱스 +1 하여 리턴한다.
+        String temp = Integer.toString(num);
+        int Arrtmp [] = new int[temp.length()];
+        
+        for (int i = 0; i < Arrtmp.length; i++) {
+			if(Arrtmp[i] == k){
+				answer = i+1;
+				break;
+			}
+		}
+        
+        return answer;
+    }
 
 }

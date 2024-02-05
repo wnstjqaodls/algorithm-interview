@@ -1,7 +1,5 @@
 package programmers.lessons2;
 
-import java.util.Arrays;
-
 public class P48_240129_NumberOfDice {
 
 	public static void main(String[] args) {
