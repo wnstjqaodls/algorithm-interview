@@ -46,6 +46,10 @@ public class P56_240131_FindNumber {
         int Arrtmp [] = new int[temp.length()];
         
         for (int i = 0; i < Arrtmp.length; i++) {
+        	Arrtmp[i] = temp.charAt(i) - '0'; //ASCII 코드값에서 48 이 문자 '0' 과 동일함. 그래서 빼주는것.
+		}
+        
+        for (int i = 0; i < Arrtmp.length; i++) {
 			if(Arrtmp[i] == k){
 				answer = i+1;
 				break;
