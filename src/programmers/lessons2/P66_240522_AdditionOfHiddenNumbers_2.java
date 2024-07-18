@@ -1,6 +1,6 @@
 package programmers.lessons2;
 
-public class P65_240522_AdditionOfHiddenNumbers_2 {
+public class P66_240522_AdditionOfHiddenNumbers_2 {
     /*
      * 문자열 my_string이 매개변수로 주어집니다. my_string에는 소문자, 대문자, 자연수로만 구성되어있습니다.
      * my_string 안에 자연수들의 합을 return하도록 solution 함수를 완성해주세요.
