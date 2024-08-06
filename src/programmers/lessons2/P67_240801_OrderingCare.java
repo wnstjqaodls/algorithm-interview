@@ -12,10 +12,11 @@ public class P67_240801_OrderingCare {
 
   public static void main (String[] args) {
     // 테스트 코드
-    System.out.println(solution(new int[30, 10, 23, 6, 100])); // 예상 출력: 37
+    int [] numArr = new int[] {30, 10, 23, 6, 100};
+    System.out.println(solution(numArr) ); // 예상 출력: 37
   }
 
-  public int[] solution(int[] emergency) {
+  public static int[] solution (int[] emergency) {
     int lengthOfemergency = emergency.length;
     int[] answer = new int[lengthOfemergency];
     //1. 배열을 정렬한다
