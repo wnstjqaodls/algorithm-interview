@@ -33,11 +33,34 @@ public class P68_240806_NearestNumber {
         // 3-20 = -17 만큼차이
         // 28-20 = 8 만큼차이.
         // 즉. 절대값만큼의 차이를 기준으로 조건판단하면됨.
-        int minDiffNum = array[0];
-        for (int i = 0; i < array.length; i++) {
-            int diffNum = Math.abs(n) - Math.abs(array[i]);
-            if(diffNum < minDiffNum) {
+        // 가장 가까운 수가 여러개일경우 더 작은 수를 리턴하라고 한다.
+        int minDiff = Integer.MAX_VALUE; //
+        int [] multipleNearNumber = new int [100];
+
+        for (int i = 1; i < array.length; i++) { // 두 번째 요소부터 시작하여 배열 순회
+            int diff = Math.abs(array[i] - n); // n과 현재 요소의 차이 계산
+
+            // 최소 차이를 업데이트하거나, 차이가 같은 경우 더 작은 수를 선택하는 조건
+            // 가장 가까운 수가 여러개일 경우  더 작은수를 리턴함.
+            if ( diff < minDiff ) {
+
+                minDiff = diff;
                 answer = array[i];
+                if (minDiff == diff){
+                    int cnt = 0;
+                    multipleNearNumber[cnt] = array[i];
+                    cnt += 1;
+                }
+            }
+        }
+
+        if(multipleNearNumber.length > 0){
+            for (int i = 0; i < multipleNearNumber.length; i++) {
+
+                if (multipleNearNumber[i] < minDiff){
+                    answer = multipleNearNumber[i];
+                }
+
             }
         }
         return answer;
