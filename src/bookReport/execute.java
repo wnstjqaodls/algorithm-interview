@@ -1,7 +1,5 @@
 package bookReport;
 
-import com.sun.org.apache.xerces.internal.xs.ItemPSVI;
-
 public class execute {
   public static void main(String[] args) {
     // 원시 데이터 타입 배열
