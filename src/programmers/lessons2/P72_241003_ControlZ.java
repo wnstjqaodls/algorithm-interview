@@ -1,5 +1,7 @@
 package programmers.lessons2;
 
+import java.util.Stack;
+
 public class P72_241003_ControlZ {
     /*
      * 숫자와 "Z"가 공백으로 구분되어 담긴 문자열이 주어집니다.
@@ -52,7 +54,30 @@ public class P72_241003_ControlZ {
 
 
     public static int solution(String s) {
+        // 1.문제분석
+        // 2.시간복잡도 고려
+            // info : 길이가 200 이고 단순반복문 1개일시 > O^n > O**200 ?
+        // 3.문제 풀이도출
+        // 반복문을 사용해서 > 공백으로 구분 > 해당토큰을 숫자인지 Z 문자인지 판별 > Z이면 빼기누적연산.
+        // 자료구조 Stack 이용
+        String [] strArr = s.split(" ");
+        int lenght = strArr.length;
+        Stack<Integer> stack = new Stack();
         int answer = 0;
+
+        for (int i = 0; i < lenght; i++) {
+
+            if( "Z".equals(String.valueOf(strArr[i])) ) {
+                stack.pop();
+                continue;
+            }
+            stack.push( Integer.valueOf(strArr[i]) );
+        }
+
+        while( !stack.isEmpty()){
+            answer += stack.pop();
+        }
+
         return answer;
     }
 }
