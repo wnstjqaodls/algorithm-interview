@@ -28,13 +28,30 @@ public class P71_240927_NumberOf7s {
 
     public static void main (String[] args) {
 
-        int [] param = {7,77,17};
-        System.out.println(solution(param));  // 예상 출력: abcd 가 나와야함  실제 : abdc
+        int [] param = {7,77,717};
+        System.out.println(solution(param));  // 예상 출력: 4가 나와야함
     }
 
 
     public static int solution(int[] array) {
-        int answer = 0;
+
+        int cnt = 0;
+        for (int i = 0; i < array.length; i++) {
+            int curr = array[i]; // 현재 숫자
+
+            int num = curr;
+            while( num > 0 ){
+                int digit = num % 10; // 현재 자리수
+                if(digit == 7){ // 자리수가 7인지 확인
+                    cnt += 1;
+                }
+
+                num /= 10;
+            }
+
+        }
+
+        int answer = cnt;
         return answer;
     }
 }
