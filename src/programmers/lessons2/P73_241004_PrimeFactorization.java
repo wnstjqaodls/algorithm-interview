@@ -1,5 +1,7 @@
 package programmers.lessons2;
 
+import java.util.ArrayList;
+
 public class P73_241004_PrimeFactorization {
     /*
      * 소인수분해란 어떤 수를 소수들의 곱으로 표현하는 것입니다. 예를 들어 12를 소인수 분해하면 2 * 2 * 3 으로 나타낼 수 있습니다.
@@ -32,13 +34,26 @@ public class P73_241004_PrimeFactorization {
 
     public static void main (String[] args) {
 
-        String param = "10 Z 20 Z 1";
+        int param = 420;
         System.out.println(solution(param));  // 예상 출력: 4가 나와야함
     }
 
 
     public static int[] solution(int n) {
-        int[] answer = {};
-        return answer;
+        ArrayList<Integer> factors = new ArrayList<>(); // 소인수가 몇개인지모르기때문에
+
+        // 소수 = 약수중에 소수 인 수
+
+        for (int i = 2; i <= n; i++) {
+            if( n % i == 0) { // i 가 소인수라면
+
+                while(n % i ==0) { // 나눌수 있을 때 까지 나눔 (소인수 중복방지)
+                    n /= i;
+                }
+                factors.add(i);
+            }
+
+        }
+        return factors.stream().mapToInt(i -> i).toArray();
     }
 }
