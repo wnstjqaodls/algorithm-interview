@@ -27,30 +27,45 @@ public class P74_241006_BinaryPlus {
     *
     입출력 예 #2
     1001 + 1111 = 11000 이므로 "11000"을 return합니다.
+    * 1001
+    * 1111
+    *11000
      */
 
     public static void main (String[] args) {
 
-        int param = 420;
-        System.out.println(solution(param));  // 예상 출력: 4가 나와야함
+        String param1 = "1001";
+        String param2 = "1111";
+        System.out.println(solution(param1,param2));  // 예상 출력: 4가 나와야함
     }
 
 
-    public static int[] solution(int n) {
-        ArrayList<Integer> factors = new ArrayList<>(); // 소인수가 몇개인지모르기때문에
+    public static String solution(String bin1, String bin2) {
+        String answer = "";
+        // 방법1 : 2진수를 10진수로 변경후 모두더한후 다시 2진수로 변경하여 리턴? > 10진수를 2진수로 바꾸는 메서드작성
+        // 방법2 : String 을 배열로 바꾸고 각 이진수끼리 비교하여 둘다 1이라면 앞자리에1을 놓음.
+        // 또다시 같은 인덱스의 이진수끼리 비교. > 둘다1이면 그앞의자리에 1로놓기.
 
-        // 소수 = 약수중에 소수 인 수
+        // 사용될만한 연산자
+        /*
+        << : 피연산자의 비트열을 왼쪽으로 이동시키며 이동에 따른 빈공간은 0으로 채움.
+        >> : 피연산자의 비트열을 오른쪽으로 이동시키며, 이동에 따른 빈공간은 음수의경우엔 1, 양수의 경우엔 0으로 채움.
+        >>> : 피연산자의 비트열을 오른쪽으로 이동시키며, 이동에 따른 빈공간은 0으로 채움.
+        */
+        StringBuilder sb = new StringBuilder();
+        char [] bin1array = bin1.toCharArray();
+        char [] bin2array = bin2.toCharArray();
 
-        for (int i = 2; i <= n; i++) {
-            if( n % i == 0) { // i 가 소인수라면
+        for (int i = bin1array.length-1; i <= 0; i--) { //revers 로 배열을시작
 
-                while(n % i ==0) { // 나눌수 있을 때 까지 나눔 (소인수 중복방지)
-                    n /= i;
+            for (int j = bin2array.length-1; j <= 0 ; j--) {
+                if(bin1array[i] == 1 && bin2array[j] == 2){
+
                 }
-                factors.add(i);
             }
-
         }
-        return factors.stream().mapToInt(i -> i).toArray();
+
+
+        return answer;
     }
 }
