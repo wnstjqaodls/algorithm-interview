@@ -1,7 +1,5 @@
 package programmers.lessons2;
 
-import java.util.ArrayList;
-
 public class P74_241006_BinaryPlus {
     /*
      *문제 설명
@@ -34,9 +32,10 @@ public class P74_241006_BinaryPlus {
 
     public static void main (String[] args) {
 
-        String param1 = "1001";
-        String param2 = "1111";
-        System.out.println(solution(param1,param2));  // 예상 출력: 4가 나와야함
+        String param1 = "10";
+        String param2 = "11";
+        System.out.println(solution(param1,param2));  // 예상 출력: 101가 나와야함
+        System.out.println(solution("1001", "1111")); // 결과: "11000"
     }
 
 
@@ -52,20 +51,45 @@ public class P74_241006_BinaryPlus {
         >> : 피연산자의 비트열을 오른쪽으로 이동시키며, 이동에 따른 빈공간은 음수의경우엔 1, 양수의 경우엔 0으로 채움.
         >>> : 피연산자의 비트열을 오른쪽으로 이동시키며, 이동에 따른 빈공간은 0으로 채움.
         */
+        int maxLength = Math.max(bin1.length(), bin2.length());
+//        bin1 = String.format("%"+ maxLength + "s", bin1).replace(' ','0');
+//        bin2 = String.format("%"+ maxLength + "s", bin2).replace(' ','0');
+        while (bin1.length() < maxLength) bin1 = "0" + bin1;
+        while (bin2.length() < maxLength) bin2 = "0" + bin2;
+
         StringBuilder sb = new StringBuilder();
-        char [] bin1array = bin1.toCharArray();
-        char [] bin2array = bin2.toCharArray();
+        // fixme 놓친것 1 : 두 이진수 문자열의 길이를 맞춰줌
+        // fixme 놓친것 2 : 덧셈에서 자리올림 carry 변수 활용
+        // fixme 놓친것 3 : 오른쪽에서 왼쪽으로 순회하면서 덧셈 수행
+        int carry = 0;
 
-        for (int i = bin1array.length-1; i <= 0; i--) { //revers 로 배열을시작
+        for (int i = maxLength-1; i >= 0 ; i--) {
+            int bit1 = bin1.charAt(i) - '0'; // bin1의 현재 비트
+            int bit2 = bin2.charAt(i) - '0'; // bin2의 현재 비트
 
-            for (int j = bin2array.length-1; j <= 0 ; j--) {
-                if(bin1array[i] == 1 && bin2array[j] == 2){
-
-                }
-            }
+            //현재 자리의 합계와 캐리 계산
+            int sum = bit1 + bit2 + carry;
+//            sb.append(sum % 2); // 현재 자리의 결과 비트 0 또는 1
+            sb.insert(0, sum % 2); // 현재 자리의 결과 비트 (0 또는 1)을 맨 앞에 추가
+            carry = sum / 2; // 다음 자리로 넘길 캐리 값
         }
 
+        if (carry != 0) {
+            sb.insert(0, carry);
+        }
+        /* info : 내가풀이 시도했던 방식
+        for (int i = bin1array.length-1; i <= lastPointer; i--) { //revers 로 배열을시작
+            for (int j = bin2array.length-1; j <= j-1 ; j--) {
 
+                if(bin1array[i] == '1' && bin2array[j] == '1'){
+                    sb.append("0");
+                } else {
+                    sb.append((bin1array[i] - '0') + (bin2array[j] - '0'));
+                }
+            }
+        }*/
+
+        answer = sb.toString();
         return answer;
     }
 }
