@@ -35,12 +35,54 @@ public class P75_241007_CutAndSaveArray {
 
         String param1 = "abc1Addfggg4556b";
         int param2 = 6;
-        System.out.println(solution(param1,param2));  // 예상 출력: 	["abc1Ad", "dfggg4", "556b"]
+        for (String curr : solution(param1,param2) ){
+            System.out.println(curr);
+        }
+
+        param1 = "abcdef123";
+        param2 = 3;
+        for (String curr : solution(param1,param2) ){
+            System.out.println(curr);
+        }
+
+//        System.out.println(solution(param1,param2));  // 예상 출력: 	["abc1Ad", "dfggg4", "556b"]
     }
 
 
     public static String[] solution(String my_str, int n) {
         String[] answer = {};
+        // todo : 문제 풀이 방향결정 String 을 배열로변경 > 반복문 > n만큼 돌며 저장
+        // todo : 사용될 메서드들, substring
+        // StringBuilder stringBuilder = new StringBuilder();
+        int length = my_str.length();
+        int quoteient = length % n == 0 ? length / n : length / n + 1;
+        boolean condition = length % n == 0 ? true : false;
+        answer = new String[quoteient];
+        int cutterStart = 0;
+        int cutterEnd = n;
+
+        if(!condition){
+            for (int i = 0; i < quoteient; i++) {
+                if(quoteient-1 == i) {
+                    answer[i] = my_str.substring(cutterStart);
+                    break;
+                }
+                answer[i] = my_str.substring(cutterStart, cutterEnd);
+                cutterStart = cutterEnd;
+                cutterEnd += n;
+            }
+        }else{
+            for (int i = 0; i < quoteient; i++) {
+                if(quoteient == i) {
+                    answer[i] = my_str.substring(cutterStart);
+                    break;
+                }
+                answer[i] = my_str.substring(cutterStart, cutterEnd);
+                cutterStart = cutterEnd;
+                cutterEnd += n;
+            }
+        }
+
         return answer;
     }
 }
