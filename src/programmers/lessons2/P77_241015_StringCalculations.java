@@ -1,5 +1,7 @@
 package programmers.lessons2;
 
+import java.util.Arrays;
+
 public class P77_241015_StringCalculations {
     /*
      *문제 설명
@@ -44,6 +46,28 @@ public class P77_241015_StringCalculations {
 
     public static int solution(String my_string) {
         int answer = 0;
+        // info : 문제풀이 전략 > 우선 + - 밖에 없다고했으니 , String 을 이동하며 + 기호발견시 이전의 값을 int 로 파싱해서누적한
+        // info 누적한값을 + 기호 뒤의 값과 연산함. > 다음공백 이전까지 > 그리고 다시 이동
+        String filterdResult;
+        String filterdOperators;
+
+        filterdResult = my_string.replaceAll("[^0-9]"," ");// 공백 제거및 숫자만 남기기
+        String [] numbers = filterdResult.split("\\s+");
+
+        System.out.println("필터된 숫자는 : "+filterdResult); // 나와야하는 결과값 : 3
+
+        filterdOperators = my_string.replaceAll("[^\\+\\-]","");
+        System.out.println("필터된 연산자는 : "+filterdOperators); // 나와야하는 결과값 : 3
+
+        answer = Integer.parseInt(numbers[0]); // 첫 번째 숫자 시작
+        for (int i = 0; i < filterdOperators.length(); i++) {
+            if(filterdOperators.charAt(i) == '+'){
+                answer += Integer.parseInt(numbers[i + 1]);
+            } else if (filterdOperators.charAt(i) == '-') {
+                answer -= Integer.parseInt(numbers[i + 1]);
+            }
+        }
+
         return answer;
     }
 }
