@@ -1,5 +1,7 @@
 package programmers.lessons2;
 
+import java.util.Arrays;
+
 public class P78_241021_TriangleCompletionConditions_2 {
     /*
     문제 설명
@@ -46,13 +48,31 @@ public class P78_241021_TriangleCompletionConditions_2 {
         int [] param = {3,6};
         int [] param2 = {11,7};
 
-            System.out.println(solution(param)); // 나와야하는 결과값 : 5 , 13
+            System.out.println(solution(param)); // 나와야하는 결과값 : 5
+            System.out.println(solution(param2)); // 나와야하는 결과값 :  13
 
     }
 
 
     public static int solution(int[] sides) {
         int answer = 0;
+        Arrays.sort(sides);
+        System.out.println("sides 0 의 값은 : "+sides[0]+" sides 1 의 값은 : "+sides[1]);
+
+        // info : 두가지 경우를 생각해야함 sides 의 두번째 값이 가장 큰값임, 이 값이  가장긴변이거나 아니거나
+
+        // info : sides [1] 가 가장 긴 변이 아닌 경우 (나머지 한 변이 가장 긴 경우)
+        for (int i = sides[1] - sides[0] + 1; i <= sides[1]; i++) {
+            answer++;
+        }
+        System.out.println(answer); // 3
+
+        // info : 나머지 한 변이 가장 긴 경우
+        for (int i = sides[1] + 1; i < sides[0] + sides[1]; i++) {
+            answer++;
+        }
+
+
         return answer;
     }
 }
