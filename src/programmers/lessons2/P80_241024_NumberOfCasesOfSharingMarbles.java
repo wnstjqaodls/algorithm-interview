@@ -1,7 +1,5 @@
 package programmers.lessons2;
 
-import java.util.HashMap;
-
 public class P80_241024_NumberOfCasesOfSharingMarbles {
     /*
     문제 설명
@@ -38,17 +36,56 @@ public class P80_241024_NumberOfCasesOfSharingMarbles {
 
     public static void main (String[] args) {
 
-
-        int param =3;
-        int param2 = 2;
-
-        System.out.println(solution(param,param2)); // 나와야하는 결과값 : 3
-
+        int balls = 5;
+        int share = 3;
+        System.out.println(solution(balls,share)); // 나와야하는 결과값 : 10
+        
+            }
+            
+        
+            // TODO : GPT 정답 도움 풀이 
+        public static long solution(int balls, int share) {
+        // 조합 공식을 직접 계산하되, 오버플로우를 방지하기 위해 
+            // 분자와 분모를 동시에 나누어가며 계산
+            long answer = 1;
+            //int denominator = 1;
+            
+            for(int i = 0; i < share; i++) {
+                answer *= (balls - i);
+                answer /= (i + 1);
+            }
+            
+            return answer;
     }
 
 
-    public static int solution(int balls, int share) {
+
+// TODO : 초기 나의 풀이 
+/*     public int solution(int balls, int share) {
         int answer = 0;
+        // info : 팩토리얼 계산로직
+        // info : 조합 공식 nCr = n! / r!(n-r)!
+        int n = calculateFactorial(balls);
+        int r = calculateFactorial(share);
+        int Denominator = calculateFactorial(balls - share);
+        answer = n / (r * Denominator);
+
         return answer;
     }
+
+    public static long solution(int balls, int share) {
+    // 조합 공식을 직접 계산하되, 오버플로우를 방지하기 위해 
+        // 분자와 분모를 동시에 나누어가며 계산
+        long answer = 1;
+        //int denominator = 1;
+        
+        for(int i = 0; i < share; i++) {
+            answer *= (balls - i);
+            answer /= (i + 1);
+        }
+        
+        return answer;
+
+    } */
+
 }
