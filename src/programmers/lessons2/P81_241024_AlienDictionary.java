@@ -1,5 +1,7 @@
 package programmers.lessons2;
 
+import java.util.Arrays;
+
 public class P81_241024_AlienDictionary {
     /*
     문제 설명
@@ -37,28 +39,35 @@ public class P81_241024_AlienDictionary {
     }
 
     public static int solution(String[] spell, String[] dic) {
-        int answer = 2; // 기본값을 2로 설정 (찾지 못한 경우)
-        
-        // dic의 각 단어를 확인
-        for (String word : dic) {
-            boolean isValid = true;
-            
-            // spell의 각 문자가 word에 정확히 한 번씩 포함되어 있는지 확인
-            for (String s : spell) {
-                if (word.length() != spell.length || 
-                    word.indexOf(s) == -1 || 
-                    word.chars().filter(ch -> ch == s.charAt(0)).count() != 1) {
-                    isValid = false;
-                    break;
-                }
-            }
-            
-            if (isValid) {
+        // 1. 이중 for 문 이용하지않고, 시간복잡도 최소화 하기위해 Set 해쉬자료구조를 이용한 풀이.
+        int answer = 2;
+        //Set<String> set = new HashSet<>();
+
+        /* for (String singleSpell : spell) {
+            set.add(singleSpell);
+        }
+ */
+        // 2. dic 배열을 순회하며, 해쉬의 원소와 일치하는 문자열이 있는지 확인.
+        /* for (String singleDic : dic) {
+            if(singleDic.contains(set.toString())) {
                 answer = 1;
                 break;
             }
-        }
-        
+        } */
+
+        String target = String.join("",spell);
+        char [] targetChars = target.toCharArray(); // char 어레이로 바꾸는이유는 sort 하기위함임.
+        Arrays.sort(targetChars);
+        String sortedTarget = new String(targetChars);
+
+        for (String singleDic : dic) {
+            char [] charArr = singleDic.toCharArray();
+            Arrays.sort(charArr);
+            if(sortedTarget.equals(new String(charArr))) {
+                answer = 1;
+                break;
+            }
+        }   
         return answer;
     }
 } 
