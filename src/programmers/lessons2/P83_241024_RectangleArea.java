@@ -32,7 +32,33 @@ public class P83_241024_RectangleArea {
     }
 
     public int solution(int[][] dots) {
-        int answer = 0;
-        return answer;
+        // 좌표를 어떻게 자료구조로 나타내어야 할까..? > 2차원 배열 그대로 사용가능하기때문에 고려할필요 X
+
+        // x 좌표의 최대값과 최소값을 구하고, y 좌표의 최대값과 최소값을 구한다,
+        // x 좌표의 값의 차이 와 y 좌표의 값의 차이를 구한다.
+        // 두 값을 곱하면 직사각형의 넓이가 나온다.
+
+        // 초기 값 설정
+        int maxX = dots[0][0];
+        int minX = dots[0][0];
+        int maxY = dots[0][1];
+        int minY = dots[0][1];
+
+        for (int i = 1; dots.length > i; i++) {
+            if (dots[i][0] > maxX) {
+                maxX = dots[i][0];
+            } 
+            if (dots[i][0] < minX){
+                minX = dots[i][0];
+            }
+            if (dots[i][1] > maxY){
+                maxY = dots[i][1];
+            }
+            if (dots[i][1] < minY){
+                minY = dots[i][1];
+            }
+        }
+
+        return (maxX - minX) * (maxY - minY);
     }
 } 
