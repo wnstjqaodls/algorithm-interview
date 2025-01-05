@@ -48,7 +48,37 @@ public class P86_241024_CursedNumber3 {
     }
 
     public int solution(int n) {
-        int answer = 0;
-        return answer;
+        // 여기에 코드를 작성하세요
+        // 1. n이 3의 배수이면 즉 % 3 == 0 이면 , n ..?
+        // 2. 만약n 이  3이면 4, 6이면 8 임, 9면 14 임
+        // 3. 1..2..5 씩증가 , 15일때 25라고했으니
+        // 반복문도중 , 다음 i 가 3의 배수이면   
+
+        // 40을 3으로 나누면 13.333333333333334 이 나오는데 그런데 리턴값은 76이 나온다. 
+        // 무슨규칙이 있는거지?
+        
+        // 이전숫자를 기억할 변수하나놓고..
+        // info : 초기 풀이 실패 
+        int before = 0;
+        for(int i = 1; i <= n; i++){
+            before += 1; // 우선 증가.
+
+            if(before % 3 == 0){ // 3의 배수이면 한번더 증가
+                before += 1;
+            }
+        }
+
+        // fixme : 실수원인 > 3의 배수만을 고려했음, 3이 포함된 숫자도 포함해야하는데 << 
+        // fixme : 실수원인2 > 3이 연속된경우의 처리를 고려못함 > 23 은 3포함 , 24는 3의배수 ..
+        int number = 0;
+        for(int i = 1; i <= n; i++){
+            number += 1; // 우선 증가.
+
+            while(number % 3 == 0 || String.valueOf(number).contains("3")){
+                number += 1;
+            }
+        }
+
+        return number;
     }
 } 
