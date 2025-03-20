@@ -50,6 +50,16 @@ public class P87_241024_ChickenCoupon {
         // 쿠폰을 열 장 모으면 치킨을 한 마리 서비스로 받을 수 있고, 서비스 치킨에도 쿠폰이 발급됩니다.
         // 1. 치킨의 수가 파라미터로 오는데, for 문을 돌며  10으로 나눈다.
         // 2. 그리고 몫이 10 이상이라면 , 또 10으로 나눈다. 이 과정을 몫이 10 미만이 될때까지 반복한다. 
+        int coupon = chicken;
+        // 남은쿠폰 remainder 의 처리 필요
+
+        while (coupon >= 10) {
+          int service = coupon / 10; 
+          answer += service;
+          coupon = (coupon % 10) + service; // 1 + 108
+          
+        }
+        
 
         return answer;
     }
