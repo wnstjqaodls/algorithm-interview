@@ -1,5 +1,7 @@
 package programmers.lessons2;
 
+import java.util.Arrays;
+
 public class P90_250422_RankByAverage {
     /*
     문제 설명
@@ -42,8 +44,26 @@ public class P90_250422_RankByAverage {
     }
 
     public int[] solution(int[][] score) {
-        int answer[] = {};
+
         
-        return answer;
+        int average[] = new int[score.length];
+
+        average = Arrays.stream(score).mapToInt(s -> (s[0] + s[1])).toArray();
+
+        int result [] = new int[score.length];
+
+        for (int i = 0; i < score.length; i++) {
+
+        int rank = 1;
+
+            for (double curr : average) {
+                if (average[i] < curr) {
+                    rank++;
+                }
+            }
+            result[i] = rank;
+
+        }
+        return result;
     }
 } 
