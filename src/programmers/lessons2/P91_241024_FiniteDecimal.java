@@ -1,5 +1,7 @@
 package programmers.lessons2;
 
+import java.math.BigDecimal;
+
 public class P91_241024_FiniteDecimal {
     /*
     문제 설명
@@ -54,7 +56,33 @@ public class P91_241024_FiniteDecimal {
     }
 
     public int solution(int a, int b) {
-        int answer = 0;
-        return answer;
+        // 1. 기약분수로 만들기
+        int gcd = getGCD(a, b);
+        b /= gcd;  // 분모를 기약분수 형태로
+        
+        // 2. 분모의 소인수 확인
+        while (b % 2 == 0) {
+            b /= 2;
+        }
+        while (b % 5 == 0) {
+            b /= 5;
+        }
+        
+        // 3. 분모가 1이면 유한소수 (2와 5만 있었다는 의미)
+        return b == 1 ? 1 : 2;
+    }
+
+    // 최대공약수 구하기
+    private int getGCD(int a, int b) {
+        if (b == 0) return a;
+        return getGCD(b, a % b);
+    }
+
+    public static boolean isOdd(int n) {
+        return (n & 1) == 1;
+    }
+
+    public static boolean isEven(int n) {
+        return (n & 1) == 0;
     }
 } 
