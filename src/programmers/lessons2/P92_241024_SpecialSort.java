@@ -1,5 +1,8 @@
 package programmers.lessons2;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class P92_241024_SpecialSort {
     /*
     문제 설명
@@ -52,7 +55,49 @@ public class P92_241024_SpecialSort {
     }
 
     public int[] solution(int[] numlist, int n) {
-        int[] answer = {};
+        int[] answer = new int[numlist.length];
+        int [][] tempArr = new int[numlist.length][2];
+
+        // 1. 2차원 배열이용, 거리와 값 저장
+        for (int i = 0; i < tempArr.length; i++) {
+            tempArr[i][0] = Math.abs(numlist[i] - n); // 거리
+            tempArr[i][1] = numlist[i]; // 값
+        }
+
+        // 2. 버블정렬 이용하여, 넣기. 이중for문
+        for (int i = 0; i < numlist.length-1; i++) {
+            for (int j = 0; j < numlist.length-1; j++) {
+                boolean swap = false;
+
+
+                // 거리비교
+                if(tempArr[j][0] > tempArr[j+1][0]) {
+                    swap = true;
+                }
+
+                // 거리같은경우 값 비교 (더큰 값이 앞으로)
+                else if(tempArr[j][0] == tempArr[j+1][0]) {
+                    if (tempArr[j][1] < tempArr[j+1][1]) {
+                        swap = true;
+                    }
+                }
+
+                if(swap) {
+                    int [] tmp = tempArr[j];
+                    tempArr[j] = tempArr[j+1];
+                    tempArr[j+1] = tmp;
+
+                }
+
+            }
+        }
+
+        for (int i = 0; i < answer.length; i++) {
+            // 값만 집어넣음.
+            answer[i] = tempArr[i][1];
+        }
+
+
         return answer;
     }
-} 
+}
