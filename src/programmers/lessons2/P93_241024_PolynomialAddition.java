@@ -1,5 +1,7 @@
 package programmers.lessons2;
 
+import java.util.Arrays;
+
 public class P93_241024_PolynomialAddition {
     /*
     문제 설명
@@ -48,6 +50,61 @@ public class P93_241024_PolynomialAddition {
         String answer = "";
 
         // 여기에 풀이 코드를 작성하세요.
+        // 1. polynomial 을 split("공백") 하여 배열로 파싱,
+        // 2. x char 존재시, 다항식, 없을시 , 상수항으로 판별
+        // 3. 다항식은 x앞의 숫자가 있으면 해당숫자 + 다항식 없으면 1로 하여 연산.
+        // 4. 다항식연산결과 저장
+        // 5. 상수항을 전부 따로 연산
+        // 6. 결과값에 다항식합 + 상수항 으로 조합
+        String [] parsedPolynomial = polynomial.split("\\+");
+
+        int polynomialSum = 0;
+        int constant = 0;
+
+        for ( String curStr : parsedPolynomial ) {
+            String curr = curStr.trim();
+
+            if(curr.contains("x")) {
+                if(curr.length() == 1) {
+                    polynomialSum += 1;
+                } else {
+                    polynomialSum += Integer.parseInt( curr.substring(0,curr.indexOf("x")) );
+
+                }
+
+            } else {
+
+
+                constant +=  Integer.parseInt(curr);
+            }
+
+        }
+
+        StringBuilder sb = new StringBuilder();
+        /*if (polynomialSum > 0) {
+            sb.append(polynomialSum);
+            sb.append("x");
+        }
+
+        if (constant > 0) {
+            sb.append(" + ");
+            sb.append(constant);
+        }*/
+        if (polynomialSum != 0) {
+            if (polynomialSum == 1) {
+                sb.append("x");
+            } else {
+                sb.append(polynomialSum).append("x");
+            }
+        }
+
+        if (constant != 0) {
+            if (sb.length() > 0) {
+                sb.append(" + ");
+            }
+            sb.append(constant);
+        }
+        answer = sb.toString();
 
         return answer;
     }
